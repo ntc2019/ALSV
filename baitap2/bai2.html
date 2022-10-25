@@ -1,0 +1,143 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .text-danger {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <template id="sinh-vien-template">
+        <tr class="sinh-vien">
+            <td class="msv">Mã Sinh Viên</td>
+            <td class="tensv">Tên Sinh Viên</td>
+            <td class="email">Email</td>
+            <td class="ngay-sinh">Ngày Sinh</td>
+            <td class="khoa-hoc">Khóa Học</td>
+            <td class="diem-tb">Điểm Trung Bình</td>
+            <td>
+                <button class="edit-btn">Edit</button>
+                <button class="remove-btn">Remove</button>
+            </td>
+        </tr>
+    </template>
+    <div class="container-fluid">
+        <div class="row">
+            <form id="add-sv-form" class="col-6 mx-auto">
+                <h3 class="display-4 text-center">Quản Lý sinh viên</h3>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Mã Sinh Viên : </label>
+                        <input disabled type="text" class="form-control" id="txtMaSV">
+                        <p class="text-danger"></p>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="">Tên Sinh Viên : </label>
+                        <input data-type="string" data-name="Ten Sinh Vien" type="text" class="form-control"
+                            id="txtTenSV">
+                        <p class="text-danger"></p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Email : </label>
+                        <input data-type="string" data-name="Email Sinh Vien" type="text" class="form-control"
+                            id="txtEmail">
+                        <p class="text-danger"></p>
+
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="">Mật khẩu: </label>
+                        <input data-type="string" data-name="Mat Khau" type="text" class="form-control" id="txtPass">
+                        <p class="text-danger"></p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Ngày Sinh : </label>
+                        <input data-name="Ngay Sinh" type="date" class="form-control" id="txtNgaySinh">
+                        <p class="text-danger"></p>
+
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="">Khóa học: </label>
+                        <select data-type="select" data-name="Khoa" id="khSV" class="form-control">
+                            <option value="">Chọn khóa học</option>
+                            <option value="1">KH001</option>
+                            <option value="2">KH002</option>
+                        </select>
+                        <p class="text-danger"></p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 form-group">
+                        <label for="">Điểm toán : </label>
+                        <input data-type="number" data-name="Diem Toan" type="text" class="form-control"
+                            id="txtDiemToan">
+                        <p class="text-danger"></p>
+
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="">Điểm lý : </label>
+                        <input data-type="number" data-name="Diem Ly" type="text" class="form-control" id="txtDiemLy">
+                        <p class="text-danger"></p>
+
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="">Điểm hóa : </label>
+                        <input data-type="number" data-name="Diem Hoa" type="text" class="form-control" id="txtDiemHoa">
+                        <p class="text-danger"></p>
+
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button id="saveBtn" class="btn btn-success">Thêm Sinh Viên</button>
+                </div>
+
+            </form>
+            <div class="col-8 mx-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mã Sinh Viên</th>
+                            <th>Tên Sinh Viên</th>
+                            <th>Email</th>
+                            <th>Ngày Sinh</th>
+                            <th>Khóa Học</th>
+                            <th>Điểm Trung Bình</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodySinhVien">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+        <script src="main.js"></script>
+    </div>
+</body>
+
+</html>
